@@ -1,16 +1,15 @@
 import { Component, input, effect, output, signal, inject } from '@angular/core';
-import { CommonModule} from '@angular/common';
 import { Sport, League } from '../types';
 import { SportsApiService } from '../services/sports-api-service'
 
+//Borttagen import av commonmodule då @for/@if används
 @Component({
   selector: 'app-league-list',
-  imports: [CommonModule],
   templateUrl: './league-list.html',
   styleUrl: './league-list.css'
 })
 export class LeagueList {
-// Input (krävs) – signalbaserad
+// Input (krävs) – signalbaseradgit
 sportIn = input.required<Sport>();
  // Output – signalbaserad
  selectLeagueIdOut = output<number>();

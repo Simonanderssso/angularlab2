@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core'; 
+// Borttaget då den ej används och endast behövs i filer 
+// som definierar en component med @Component
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app';
+import { App } from './app/app';
 
 
-bootstrapApplication(AppComponent).catch(err => console.error(err));
+bootstrapApplication(App).catch(err => console.error(err));

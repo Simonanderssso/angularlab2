@@ -1,3 +1,20 @@
 <h2>Lag</h2>
-Välj en liga till vänster
-<p>(koda om detta så att när man klickar på en liga så skickas ligans id till förälder (AppComponent) och via en signal sedan skickas in till denna komponent. Felhantering med 'loading och 'error' finns med på samma sätt som LeagueList. Försök även få till att när man byter sport så skall liga-id sättas till null och då skall "välj en liga till vänster" dyka upp i den här komponenten. Det finns många likhenter med LeagueList som ni redan fått.) </p>
+<!--Utan parantesen jämförs signalerna och inte innehållet i 
+leagueIdIn och då visas aldrig texten som sa visas före liga är vald-->
+@if (leagueIdIn() === null) {
+    <p>Välj en liga till vänster för att se lag</p>
+} @else if (loading()) {
+    <p>Loading...</p>
+} @else if (error()) {
+    <p>{{ error() }}</p>
+} @else {
+    <ul>
+        <!--track team.id är unik nyckel per lag så angular an använda befintliga
+        element och slippa bygga om hela listan.-->
+        @for (team of teams(); track team.id) {
+            <li>{{ team.name }}</li>
+        } @empty {
+            <li>Inga lag finns i ligan.</li>
+        }
+    </ul>
+}

@@ -76,7 +76,9 @@ export class SportsApiService {
       const sid = SPORT_ID[sport];
       return this.mockLeagues.filter(l => l.sportId === sid);
     }
-    return <League[]>[];
+    //returtypen Promise<League[]> anger redan returtyp
+    // så <League[]>[]; ej nödvändigt räcker med nedan.
+    return [];
   }
   /**
    * Hämta lag för en liga.
@@ -86,6 +88,7 @@ export class SportsApiService {
       //await sleep(200, signal);
       return this.mockTeams.filter(t => t.leagueId === Number(leagueId));
     }
-    return <Team[]>[];
+    //Lika med returen här från <Team[]>[]; till nedan.
+    return [];
   }
 }

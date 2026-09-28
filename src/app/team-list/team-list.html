@@ -1,5 +1,16 @@
 <h2>Lag</h2>
-<p>TeamList fick: {{ leagueIdIn() ?? 'ingen'}}</p>
-<p>Laddar: {{ loading() }} Antal lag: {{ teams().length }}</p>
-Välj en liga till vänster
-<p>(koda om detta så att när man klickar på en liga så skickas ligans id till förälder (AppComponent) och via en signal sedan skickas in till denna komponent. Felhantering med 'loading och 'error' finns med på samma sätt som LeagueList. Försök även få till att när man byter sport så skall liga-id sättas till null och då skall "välj en liga till vänster" dyka upp i den här komponenten. Det finns många likhenter med LeagueList som ni redan fått.) </p>
+@if (leagueIdIn === null) {
+    <p>Väl en liga till vänster</p>
+} @else if (loading()) {
+    <p>Loading...</p>
+} @else if (error()) {
+    <p>{{ error() }}</p>
+} @else {
+    <ul>
+        @for (team of teams(); track team.id) {
+            <li>{{ team.name }}</li>
+        } @empty {
+            <li>Inga lag finns i ligan.</li>
+        }
+    </ul>
+}

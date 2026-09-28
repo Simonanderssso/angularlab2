@@ -1,6 +1,6 @@
 <h2>Lag</h2>
-@if (leagueIdIn === null) {
-    <p>Väl en liga till vänster</p>
+@if (leagueIdIn() === null) {
+    <p>Välj en liga till för att se lag</p>
 } @else if (loading()) {
     <p>Loading...</p>
 } @else if (error()) {

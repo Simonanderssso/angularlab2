@@ -1,4 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal, effect, inject } from '@angular/core';
+import { Team } from '../types';
+import { SportsApiService } from '../services/sports-api-service'
 
 @Component({
   selector: 'app-team-list',
@@ -10,8 +12,8 @@ export class TeamList {
 
   leagueIdIn = input.required< number | null>(); //Liga id från päron, null för ingen vald liga.
 
-  teams = signal<Teams[]>([]);
-  loading = Signal(false);
+  teams = signal<Team[]>([]);
+  loading = signal(false);
   error = signal<string | null>(null);
 
   private api = inject(SportsApiService);
@@ -21,7 +23,7 @@ export class TeamList {
       const id = this.leagueIdIn();
 
       if (id === null) {   //Om liga ej vald töms allt och inget hämtas
-        this.teams.set(null);
+        this.teams.set([]);
         this.loading.set(false);
         this.error.set(null);
         return;
@@ -34,8 +36,8 @@ export class TeamList {
       onCleanup(() => ctrl.abort());
       
       this.api.getTeams(id, ctrl.signal).then(
-        data => { this.leagues.set(data); this.loading.set(false); },
-        err => {if (err.name !== 'AbortError') { this.error.set('Kunde inte hämta lag'); this.loading.set(false); } }
+        data => { this.teams.set(data); this.loading.set(false); },
+        err => { if (err.name !== 'AbortError') { this.error.set('Kunde inte hämta lag'); this.loading.set(false); } }
       );      
     });
   }

@@ -9,7 +9,7 @@ import { SportsApiService } from '../services/sports-api-service'
   styleUrl: './league-list.css'
 })
 export class LeagueList {
-// Input (krävs) – signalbaserad
+// Input (krävs) – signalbaseradgit
 sportIn = input.required<Sport>();
  // Output – signalbaserad
  selectLeagueIdOut = output<number>();

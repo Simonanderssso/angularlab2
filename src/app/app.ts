@@ -17,6 +17,12 @@ import { Sport } from './types'
   // istället för urls då url för en ända fil finns sedan Angular 17.
   styleUrl: './app.css'
 })
+
+//App = förälder äger appens state: vald sport och vald liga.
+// flödet = barnen skickar händelse uppåt via output ex sportChangeOut
+// App uppdaterar sina signaler, deras värden sickas ner till barnen då via 
+// input ex. selectedSportIn, sportIn
+// Barnen vet ej om varandra, all kommunikation går via App.
 export class App {
 
   // Lokal signal som håller reda på vald sport, default 'football'
@@ -34,7 +40,9 @@ export class App {
   // Sätt värdet via en metod som triggas av barnet LeagueList och som skickas
   // in i barnet TeamList
 
-  onLeagueSelect(leagueId: number) {    //LeagueList har output number så det krävs här
+  //Anropas när LeagueList skickar ut ett liga-id via selectLeagueIdOut (app.html)  
+  //När signalen ändras får TeamList det nya id:t via sin input leagueIdIn.
+  onLeagueSelect(leagueId: number) {    //LeagueList har output<number>() så det krävs här
     this.selectedLeagueId.set(leagueId); // Sätter in id:t på ligan i signalen 
   }
 }

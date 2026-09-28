@@ -1,12 +1,16 @@
 <h2>Lag</h2>
+<!--Utan parantesen jämförs signalerna och inte innehållet i 
+leagueIdIn och då visas aldrig texten som sa visas före liga är vald-->
 @if (leagueIdIn() === null) {
-    <p>Välj en liga till för att se lag</p>
+    <p>Välj en liga till vänster för att se lag</p>
 } @else if (loading()) {
     <p>Loading...</p>
 } @else if (error()) {
     <p>{{ error() }}</p>
 } @else {
     <ul>
+        <!--track team.id är unik nyckel per lag så angular an använda befintliga
+        element och slippa bygga om hela listan.-->
         @for (team of teams(); track team.id) {
             <li>{{ team.name }}</li>
         } @empty {

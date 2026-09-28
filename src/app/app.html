@@ -8,12 +8,16 @@
 
 <main class="layout">
   <section class="col">
+    <!-- (selectLeagueIdOut): lyssnar på LeagueLists output. $event är liga-id:t
+         och skickas med .emit(l.id) och går vidare in i onLeagueSelect() -->    
     <app-league-list
     [sportIn]="currentSport()"  
     (selectLeagueIdOut)="onLeagueSelect($event)">
   </app-league-list>
   </section>
   <section class="col">
+    <!-- [leagueIdIn]: skickar värdet av selectedLeagueId
+         in i TeamLists input. -->
     <app-team-list 
     [leagueIdIn]="selectedLeagueId()">
   </app-team-list>

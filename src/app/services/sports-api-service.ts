@@ -32,12 +32,12 @@ export class SportsApiService {
     //Allsvenskan
     { id: 9367, name: 'AIK',        logo: '', leagueId: 124439 },
     { id: 9368, name: 'Djurgården', logo: '', leagueId: 124439 },
-    { id: 9369, name: 'Hammarby ', logo: '', leagueId: 124439 },
+    { id: 9369, name: 'Hammarby', logo: '', leagueId: 124439 },
 
     //Damallsvenskan
     { id: 9739, name: 'AIK DFF',    logo: '', leagueId: 123935 },
-    { id: 9368, name: 'Örebro BK', logo: '', leagueId: 123935 },
-    { id: 9368, name: 'Gefle If', logo: '', leagueId: 123935 },
+    { id: 9740, name: 'Örebro BK', logo: '', leagueId: 123935 },
+    { id: 9741, name: 'Gefle If', logo: '', leagueId: 123935 },
 
 
     //SHL
@@ -48,7 +48,7 @@ export class SportsApiService {
     //SDHL
     { id: 1111, name: 'Djurgårdens IF', logo: '', leagueId: 125554 },
     { id: 1112, name: 'Malmö HC', logo: '', leagueId: 125554 },
-    { id: 1113, name: 'Sde HC', logo: '', leagueId: 125554 },
+    { id: 1113, name: 'SDE HC', logo: '', leagueId: 125554 },
 
     //SSL Herr
     { id: 2221, name: 'Djurgården IB', logo: '', leagueId: 123456 },

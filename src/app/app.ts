@@ -7,7 +7,7 @@ import { Sport } from './types'
 
 @Component({
   selector: 'app-root',
-  standalone: true,
+  standalone: true,  //Gammal kod då stadnalone nu är true som standard.
   imports: [CommonModule, SportMenu, LeagueList, TeamList],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
@@ -28,4 +28,8 @@ export class AppComponent {
   selectedLeagueId = signal<number | null>(null);
   // Sätt värdet via en metod som triggas av barnet LeagueList och som skickas
   // in i barnet TeamList
+
+  onLeagueSelect(leagueId: number) {    //LeagueList har output number så det krävs här
+    this.selectedLeagueId.set(leagueId); // Sätter in id:t på ligan i signalen 
+  }
 }

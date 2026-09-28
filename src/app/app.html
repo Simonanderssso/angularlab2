@@ -9,7 +9,8 @@
 <main class="layout">
   <section class="col">
     <app-league-list
-    [sportIn]="currentSport()"   >
+    [sportIn]="currentSport()"  
+    (selectedLeagueIdOut)="onLeagueSelect($event)" >
   </app-league-list>
   </section>
   <section class="col">
